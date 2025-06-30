@@ -5,13 +5,13 @@ import {
   About, 
   Services, 
   Portfolio, 
-  Contact,
   ProjectDetail,
   ServiceDetail,
   Header,
   Footer 
 } from './components';
 import './App.css';
+import { Contact } from './Contact';
 
 function App() {
   return (
