@@ -1594,11 +1594,36 @@ export const Footer = () => {
             <div>
               <h3 className="text-yellow-400 font-bold text-sm mb-3">QUICK LINKS</h3>
               <ul className="space-y-1">
-                <li><Link to="/" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Home</Link></li>
-                <li><Link to="/about" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">About Us</Link></li>
-                <li><Link to="/services" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Services</Link></li>
-                <li><Link to="/portfolio" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Portfolio</Link></li>
-                <li><Link to="/contact" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Contact</Link></li>
+                <li><Link to="/" onClick={()=>{
+                   window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Home</Link></li>
+                <li><Link to="/about" onClick={()=>{
+                   window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">About Us</Link></li>
+                <li><Link to="/services" onClick={()=>{
+                   window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Services</Link></li>
+                <li><Link to="/portfolio" onClick={()=>{
+                   window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Portfolio</Link></li>
+                <li><Link to="/contact" onClick={()=>{
+                   window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Contact</Link></li>
               </ul>
             </div>
 
