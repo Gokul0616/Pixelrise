@@ -26,7 +26,7 @@ import {
   FaBuilding,
   FaTools
 } from 'react-icons/fa';
-
+import toast, { Toaster } from 'react-hot-toast';
 // Emergency Marquee Component (Footer Only)
 const EmergencyMarquee = () => {
   return (
@@ -72,12 +72,27 @@ const EmergencyMarquee = () => {
 };
 
 // CTA Button Component
+// CTA Button Component
 const CTAButton = ({ className = "", children, onClick, to = "/contact" }) => {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  };
+
+  const handleClick = (e) => {
+    scrollToTop();
+    if (onClick) {
+      onClick(e);
+    }
+  };
+
   const content = (
     <motion.button
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
-      onClick={onClick}
+      onClick={handleClick}
       className={`bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors btn-hover text-sm ${className}`}
     >
       {children}
@@ -86,7 +101,7 @@ const CTAButton = ({ className = "", children, onClick, to = "/contact" }) => {
 
   if (to && !onClick) {
     return (
-      <Link to={to}>
+      <Link to={to} onClick={scrollToTop}>
         {content}
       </Link>
     );
@@ -94,7 +109,6 @@ const CTAButton = ({ className = "", children, onClick, to = "/contact" }) => {
 
   return content;
 };
-
 // Infinite Marquee Component
 const InfiniteMarquee = ({ children, className = "" }) => {
   return (
@@ -150,7 +164,7 @@ export const Header = () => {
             <a href="https://youtube.com" className="text-black hover:text-red-600 transition-colors">
               <FaYoutube size={16} />
             </a>
-            <a href="https://in.linkedin.com/company/pixelrise-web-co-a07440371" className="text-black hover:text-blue-800 transition-colors">
+            <a href="https://in.linkedin.com/in/pixelrise-web-co-a07440371" className="text-black hover:text-blue-800 transition-colors">
               <FaLinkedin size={16} />
             </a>
           </div>
@@ -236,8 +250,10 @@ export const Header = () => {
 
 // Hero Section
 const HeroSection = () => {
-  return (
+  return (<>
+      <EmergencyMarquee />
     <section className="bg-black py-12 relative overflow-hidden">
+
       <div className="container mx-auto px-4">
         <div className="grid lg:grid-cols-2 gap-8 items-center">
           {/* Left Content */}
@@ -337,7 +353,7 @@ const HeroSection = () => {
           >
             <div className="relative">
               {/* Laptop Mockup */}
-              <div className="relative z-10">
+              <div className="relative z-10" style={{zIndex:1}}>
                 <img 
                   src="https://images.unsplash.com/photo-1699154581577-ce92c7a86638?w=500&h=300&fit=crop" 
                   alt="Professional Website" 
@@ -347,7 +363,7 @@ const HeroSection = () => {
               </div>
 
               {/* Mobile Mockup */}
-              <div className="absolute -bottom-8 -right-8 z-20">
+              <div className="absolute -bottom-8 -right-8 z-20" style={{zIndex:1}}>
                 <img 
                   src="https://images.unsplash.com/photo-1553169507-38833977274b?w=150&h=200&fit=crop" 
                   alt="Mobile Website" 
@@ -360,6 +376,7 @@ const HeroSection = () => {
                 animate={{ y: [-8, 8, -8] }}
                 transition={{ repeat: Infinity, duration: 3 }}
                 className="absolute top-8 -right-4 bg-yellow-400 text-black p-2 rounded-full shadow-lg"
+                style={{zIndex:1000}}
               >
                 <span className="font-bold text-xs">24H</span>
               </motion.div>
@@ -368,6 +385,17 @@ const HeroSection = () => {
                 animate={{ y: [8, -8, 8] }}
                 transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute -top-4 left-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
+                style={{zIndex:1000}}
+
+              >
+                <FaStar size={12} />
+              </motion.div>
+              <motion.div
+                animate={{ y: [8, -8, 8] }}
+                transition={{ repeat: Infinity, duration: 4 }}
+                className="absolute bottom-20 right-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
+                style={{zIndex:1000}}
+
               >
                 <FaStar size={12} />
               </motion.div>
@@ -379,6 +407,7 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="absolute -bottom-4 left-4 bg-gray-800 p-3 rounded-lg shadow-xl max-w-xs"
+              style={{zIndex:1}}
             >
               <div className="flex items-center space-x-2 mb-2">
                 <img 
@@ -404,6 +433,7 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 
@@ -1525,7 +1555,341 @@ export const Portfolio = () => {
   );
 };
 
-// Contact Page
+// // Contact Page
+// export const Contact = () => {
+//   const [formData, setFormData] = useState({
+//     name: '',
+//     email: '',
+//     phone: '',
+//     company: '',
+//     website: '',
+//     service: 'roofing',
+//     budget: '',
+//     timeline: '',
+//     projectType: '',
+//     message: '',
+//     hearAboutUs: '',
+//     preferredContact: 'email'
+//   });
+
+//   const handleSubmit = (e) => {
+//     e.preventDefault();
+//     console.log('Form submitted:', formData);
+//     alert('Thank you for your message! We will get back to you within 24 hours.');
+//   };
+
+//   const handleChange = (e) => {
+//     setFormData({
+//       ...formData,
+//       [e.target.name]: e.target.value
+//     });
+//   };
+
+//   return (
+//     <main className="py-12">
+//       <div className="container mx-auto px-4">
+//         <motion.div
+//           initial={{ opacity: 0, y: 50 }}
+//           animate={{ opacity: 1, y: 0 }}
+//           transition={{ duration: 0.8 }}
+//           className="text-center mb-12"
+//         >
+//           <h1 className="text-2xl lg:text-4xl font-bold mb-4">
+//             CONTACT <span className="text-yellow-400">US</span>
+//           </h1>
+//           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
+//             Ready to transform your business with a stunning website? 
+//             Get in touch with us today for a free consultation.
+//           </p>
+//           <CTAButton className="text-sm px-6 py-3">
+//             📞 CALL NOW FOR FREE QUOTE
+//           </CTAButton>
+//         </motion.div>
+
+//         <div className="grid lg:grid-cols-2 gap-8">
+//           {/* Contact Form */}
+//           <motion.div
+//             initial={{ opacity: 0, x: -50 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.8, delay: 0.2 }}
+//             className="bg-gray-800 p-6 rounded-lg"
+//           >
+//             <h2 className="text-xl font-bold text-yellow-400 mb-6">Send Us a Message</h2>
+//             <form onSubmit={handleSubmit} className="space-y-4">
+//               <div className="grid md:grid-cols-2 gap-4">
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Name *</label>
+//                   <input
+//                     type="text"
+//                     name="name"
+//                     value={formData.name}
+//                     onChange={handleChange}
+//                     required
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   />
+//                 </div>
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Email *</label>
+//                   <input
+//                     type="email"
+//                     name="email"
+//                     value={formData.email}
+//                     onChange={handleChange}
+//                     required
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   />
+//                 </div>
+//               </div>
+
+//               <div className="grid md:grid-cols-2 gap-4">
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Phone</label>
+//                   <input
+//                     type="tel"
+//                     name="phone"
+//                     value={formData.phone}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   />
+//                 </div>
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Company Name</label>
+//                   <input
+//                     type="text"
+//                     name="company"
+//                     value={formData.company}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   />
+//                 </div>
+//               </div>
+
+//               <div>
+//                 <label className="block text-white mb-1 text-sm">Current Website (if any)</label>
+//                 <input
+//                   type="url"
+//                   name="website"
+//                   value={formData.website}
+//                   onChange={handleChange}
+//                   placeholder="https://yourwebsite.com"
+//                   className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                 />
+//               </div>
+
+//               <div className="grid md:grid-cols-2 gap-4">
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Service Needed</label>
+//                   <select
+//                     name="service"
+//                     value={formData.service}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   >
+//                     <option value="roofing">Roofing Website</option>
+//                     <option value="hotel">Hotel Website</option>
+//                     <option value="restaurant">Restaurant Website</option>
+//                     <option value="beauty">Beauty Parlor Website</option>
+//                     <option value="gym">Gym Website</option>
+//                     <option value="custom">Custom Solution</option>
+//                     <option value="redesign">Website Redesign</option>
+//                     <option value="ecommerce">E-commerce Website</option>
+//                   </select>
+//                 </div>
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Project Type</label>
+//                   <select
+//                     name="projectType"
+//                     value={formData.projectType}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   >
+//                     <option value="">Select Type</option>
+//                     <option value="new">New Website</option>
+//                     <option value="redesign">Website Redesign</option>
+//                     <option value="maintenance">Website Maintenance</option>
+//                     <option value="seo">SEO Optimization</option>
+//                     <option value="ecommerce">E-commerce Store</option>
+//                   </select>
+//                 </div>
+//               </div>
+
+//               <div className="grid md:grid-cols-2 gap-4">
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Budget Range</label>
+//                   <select
+//                     name="budget"
+//                     value={formData.budget}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   >
+//                     <option value="">Select Budget</option>
+//                     <option value="under-1k">Under $1,000</option>
+//                     <option value="1k-3k">$1,000 - $3,000</option>
+//                     <option value="3k-5k">$3,000 - $5,000</option>
+//                     <option value="5k-10k">$5,000 - $10,000</option>
+//                     <option value="10k-plus">$10,000+</option>
+//                     <option value="discuss">Prefer to Discuss</option>
+//                   </select>
+//                 </div>
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Timeline</label>
+//                   <select
+//                     name="timeline"
+//                     value={formData.timeline}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   >
+//                     <option value="">Select Timeline</option>
+//                     <option value="asap">ASAP (24 hours)</option>
+//                     <option value="1-week">Within 1 week</option>
+//                     <option value="2-weeks">Within 2 weeks</option>
+//                     <option value="1-month">Within 1 month</option>
+//                     <option value="flexible">Flexible</option>
+//                   </select>
+//                 </div>
+//               </div>
+
+//               <div className="grid md:grid-cols-2 gap-4">
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">How did you hear about us?</label>
+//                   <select
+//                     name="hearAboutUs"
+//                     value={formData.hearAboutUs}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   >
+//                     <option value="">Select Option</option>
+//                     <option value="google">Google Search</option>
+//                     <option value="social">Social Media</option>
+//                     <option value="referral">Referral</option>
+//                     <option value="advertising">Online Advertising</option>
+//                     <option value="other">Other</option>
+//                   </select>
+//                 </div>
+//                 <div>
+//                   <label className="block text-white mb-1 text-sm">Preferred Contact Method</label>
+//                   <select
+//                     name="preferredContact"
+//                     value={formData.preferredContact}
+//                     onChange={handleChange}
+//                     className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                   >
+//                     <option value="email">Email</option>
+//                     <option value="phone">Phone Call</option>
+//                     <option value="text">Text Message</option>
+//                     <option value="any">Any Method</option>
+//                   </select>
+//                 </div>
+//               </div>
+
+//               <div>
+//                 <label className="block text-white mb-1 text-sm">Project Details *</label>
+//                 <textarea
+//                   name="message"
+//                   value={formData.message}
+//                   onChange={handleChange}
+//                   required
+//                   rows={4}
+//                   placeholder="Tell us about your project, goals, and any specific requirements..."
+//                   className="w-full p-2 bg-gray-700 text-white rounded-lg focus:outline-none focus:ring-2 focus:ring-yellow-400 text-sm"
+//                 />
+//               </div>
+
+//               <CTAButton type="submit" className="w-full text-sm">
+//                 Send Message
+//               </CTAButton>
+//             </form>
+//           </motion.div>
+
+//           {/* Contact Info */}
+//           <motion.div
+//             initial={{ opacity: 0, x: 50 }}
+//             animate={{ opacity: 1, x: 0 }}
+//             transition={{ duration: 0.8, delay: 0.4 }}
+//             className="space-y-6"
+//           >
+//             <div className="bg-gray-800 p-6 rounded-lg">
+//               <h2 className="text-xl font-bold text-yellow-400 mb-4">Get In Touch</h2>
+//               <div className="space-y-3">
+//                 <div className="flex items-center space-x-3">
+//                   <FaEnvelope className="text-yellow-400" />
+//                   <div>
+//                     <p className="text-white font-semibold text-sm">Email</p>
+//                     <p className="text-gray-300 text-sm">pixelrisewebco@gmail.com</p>
+//                   </div>
+//                 </div>
+//                 <div className="flex items-center space-x-3">
+//                   <FaPhone className="text-yellow-400" />
+//                   <div>
+//                     <p className="text-white font-semibold text-sm">Phone</p>
+//                     <p className="text-gray-300 text-sm">+1 (407) 641-3731</p>
+//                   </div>
+//                 </div>
+//                 <div className="flex items-center space-x-3">
+//                   <FaMapMarkerAlt className="text-yellow-400" />
+//                   <div>
+//                     <p className="text-white font-semibold text-sm">Address</p>
+//                     <p className="text-gray-300 text-sm">Nationwide Service, USA</p>
+//                   </div>
+//                 </div>
+//               </div>
+//             </div>
+
+//             <div className="bg-gray-800 p-6 rounded-lg">
+//               <h2 className="text-xl font-bold text-yellow-400 mb-4">Follow Us</h2>
+//               <div className="flex space-x-3">
+//                 <a href="https://instagram.com/pixelrisewebco" className="bg-pink-600 p-3 rounded-full hover:bg-pink-700 transition-colors">
+//                   <FaInstagram className="text-white" />
+//                 </a>
+//                 <a href="https://in.linkedin.com/in/pixelrise-web-co-a07440371" className="bg-blue-800 p-3 rounded-full hover:bg-blue-900 transition-colors">
+//                   <FaLinkedin className="text-white" />
+//                 </a>
+//                 <a href="https://facebook.com" className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors">
+//                   <FaFacebook className="text-white" />
+//                 </a>
+//                 <a href="https://youtube.com" className="bg-red-600 p-3 rounded-full hover:bg-red-700 transition-colors">
+//                   <FaYoutube className="text-white" />
+//                 </a>
+//               </div>
+//             </div>
+
+//             <div className="bg-gray-800 p-6 rounded-lg">
+//               <h2 className="text-xl font-bold text-yellow-400 mb-4">Operating Hours</h2>
+//               <p className="text-white mb-2 text-sm">24/7 Available</p>
+//               <p className="text-gray-300 text-xs mb-4">Send us a message anytime</p>
+//               <CTAButton className="text-sm">
+//                 📅 SCHEDULE INTRO CALL
+//               </CTAButton>
+//             </div>
+
+//             <div className="bg-gray-800 p-6 rounded-lg">
+//               <h2 className="text-xl font-bold text-yellow-400 mb-4">Why Choose Us?</h2>
+//               <ul className="space-y-2">
+//                 <li className="flex items-center space-x-2">
+//                   <FaRocket className="text-green-500 text-sm" />
+//                   <span className="text-gray-300 text-sm">24-Hour Emergency Delivery</span>
+//                 </li>
+//                 <li className="flex items-center space-x-2">
+//                   <FaShieldAlt className="text-green-500 text-sm" />
+//                   <span className="text-gray-300 text-sm">100% Satisfaction Guarantee</span>
+//                 </li>
+//                 <li className="flex items-center space-x-2">
+//                   <FaTrophy className="text-green-500 text-sm" />
+//                   <span className="text-gray-300 text-sm">500+ Successful Projects</span>
+//                 </li>
+//                 <li className="flex items-center space-x-2">
+//                   <FaStar className="text-green-500 text-sm" />
+//                   <span className="text-gray-300 text-sm">5-Star Average Rating</span>
+//                 </li>
+//               </ul>
+//             </div>
+//           </motion.div>
+//         </div>
+//       </div>
+//     </main>
+//   );
+// };
+
 export const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
@@ -1545,7 +1909,33 @@ export const Contact = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log('Form submitted:', formData);
-    alert('Thank you for your message! We will get back to you within 24 hours.');
+    toast.success('Submitted successfully! We will reach you shortly.', {
+      style: {
+        background: '#1F2937', // Tailwind gray-800
+        color: '#F3F4F6', // Tailwind gray-100
+        border: '1px solid #FBBF24', // Tailwind yellow-400
+        borderRadius: '8px',
+      },
+      iconTheme: {
+        primary: '#DC2626', // Tailwind red-600
+        secondary: '#F3F4F6', // Tailwind gray-100
+      },
+    });
+    // Reset form after submission
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      company: '',
+      website: '',
+      service: 'roofing',
+      budget: '',
+      timeline: '',
+      projectType: '',
+      message: '',
+      hearAboutUs: '',
+      preferredContact: 'email'
+    });
   };
 
   const handleChange = (e) => {
@@ -1557,6 +1947,7 @@ export const Contact = () => {
 
   return (
     <main className="py-12">
+      <Toaster position="top-right" toastOptions={{ duration: 5000 }} />
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
@@ -1811,7 +2202,7 @@ export const Contact = () => {
                 <a href="https://instagram.com/pixelrisewebco" className="bg-pink-600 p-3 rounded-full hover:bg-pink-700 transition-colors">
                   <FaInstagram className="text-white" />
                 </a>
-                <a href="https://in.linkedin.com/company/pixelrise-web-co-a07440371" className="bg-blue-800 p-3 rounded-full hover:bg-blue-900 transition-colors">
+                <a href="https://in.linkedin.com/in/pixelrise-web-co-a07440371" className="bg-blue-800 p-3 rounded-full hover:bg-blue-900 transition-colors">
                   <FaLinkedin className="text-white" />
                 </a>
                 <a href="https://facebook.com" className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors">
@@ -1935,7 +2326,7 @@ export const Footer = () => {
                     <a href="https://youtube.com" className="text-gray-300 hover:text-red-600 transition-colors">
                       <FaYoutube size={16} />
                     </a>
-                    <a href="https://in.linkedin.com/company/pixelrise-web-co-a07440371" className="text-gray-300 hover:text-blue-800 transition-colors">
+                    <a href="https://in.linkedin.com/in/pixelrise-web-co-a07440371" className="text-gray-300 hover:text-blue-800 transition-colors">
                       <FaLinkedin size={16} />
                     </a>
                   </div>
