@@ -148,12 +148,12 @@ export const Header = () => {
         <div className="flex items-center justify-between py-2">
           {/* Logo Section */}
           <Link to="/" className="flex items-center space-x-2" onClick={() => {
-                  setIsMenuOpen(false);
-setTimeout(()=>{
+            setIsMenuOpen(false);
+            setTimeout(() => {
 
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-},500)
-  }}>
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }, 500)
+          }}>
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-2 rounded-full">
               <FaCrown className="text-black text-lg" />
             </div>
@@ -267,23 +267,23 @@ setTimeout(()=>{
                     {item.name}
                   </Link>
                 ))}
-                                 <Link
-  to="/contact"
-  onClick={() => {
-    setTimeout(() => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    }, 100); // Delay gives time for route to load
-  }}
->
-                <CTAButton className="w-full mt-3 text-xs" onClick={() => {
-                  setIsMenuOpen(false);
+                <Link
+                  to="/contact"
+                  onClick={() => {
+                    setTimeout(() => {
+                      window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }, 100); // Delay gives time for route to load
+                  }}
+                >
+                  <CTAButton className="w-full mt-3 text-xs" onClick={() => {
+                    setIsMenuOpen(false);
 
-                }}>
+                  }}>
 
-  📅 SCHEDULE CALL
+                    📅 SCHEDULE CALL
 
-                </CTAButton>
-</Link>
+                  </CTAButton>
+                </Link>
               </div>
             </motion.nav>
           )}
@@ -421,16 +421,24 @@ const HeroSection = () => {
                 animate={{ y: [-8, 8, -8] }}
                 transition={{ repeat: Infinity, duration: 3 }}
                 className="absolute top-8 -right-4 bg-yellow-400 text-black p-2 rounded-full shadow-lg"
-                style={{ zIndex: 1000 }}
+                style={{ zIndex: 2 }}
               >
                 <span className="font-bold text-xs">24H</span>
+              </motion.div>
+                  <motion.div
+                animate={{ y: [-10, 10, -10] }}
+                transition={{ repeat: Infinity, duration: 5 }}
+                className="absolute top-20 -left-4 bg-yellow-400 text-black p-2 rounded-full shadow-lg"
+                style={{ zIndex: 2 }}
+              >
+              <FaCrown className="text-black text-lg" />
               </motion.div>
 
               <motion.div
                 animate={{ y: [8, -8, 8] }}
                 transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute -top-4 left-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
-                style={{ zIndex: 1000 }}
+                style={{ zIndex: 2 }}
 
               >
                 <FaStar size={12} />
@@ -439,7 +447,7 @@ const HeroSection = () => {
                 animate={{ y: [8, -8, 8] }}
                 transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute -bottom-10 left-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
-                style={{ zIndex: 1000 }}
+                style={{ zIndex: 2 }}
 
               >
                 <FaStar size={12} />
@@ -449,7 +457,7 @@ const HeroSection = () => {
                 animate={{ y: [8, -8, 8] }}
                 transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute bottom-20 right-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
-                style={{ zIndex: 1000 }}
+                style={{ zIndex: 2 }}
 
               >
                 <FaStar size={12} />
@@ -1752,17 +1760,17 @@ export const Footer = () => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-6">
-  <div className="text-center">
-    <p className="text-gray-400 text-xs mb-3">
-      © All rights reserved. Unauthorized use, reproduction, or distribution of any part of this website is strictly prohibited and may result in legal action.
-    </p>
-    <div className="bg-red-600 py-2 px-3 rounded">
-      <p className="text-white text-xs">
-        Designed with ❤️ by <strong>Pixel Rise Web Co</strong> — Turning ideas into powerful digital experiences.
-      </p>
-    </div>
-  </div>
-</div>
+            <div className="text-center">
+              <p className="text-gray-400 text-xs mb-3">
+                © All rights reserved. Unauthorized use, reproduction, or distribution of any part of this website is strictly prohibited and may result in legal action.
+              </p>
+              <div className="bg-red-600 py-2 px-3 rounded">
+                <p className="text-white text-xs">
+                  Designed with ❤️ by <strong>Pixel Rise Web Co</strong> — Turning ideas into powerful digital experiences.
+                </p>
+              </div>
+            </div>
+          </div>
 
         </div>
       </footer>
