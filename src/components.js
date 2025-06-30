@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useParams } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  FaFacebook, 
-  FaInstagram, 
-  FaLinkedin, 
-  FaGoogle, 
+import {
+  FaFacebook,
+  FaInstagram,
+  FaLinkedin,
+  FaGoogle,
   FaYoutube,
   FaStar,
   FaPhone,
@@ -27,7 +27,7 @@ import {
   FaTools
 } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
-// Emergency Marquee Component (Footer Only)
+
 const EmergencyMarquee = () => {
   return (
     <div className="bg-red-600 text-white py-1.5 overflow-hidden">
@@ -65,14 +65,12 @@ const EmergencyMarquee = () => {
         </span><span className="text-xs font-semibold mx-4">
           🚨 EMERGENCY WEBSITE DELIVERY WITHIN 24 HOURS! 🚨
         </span>
-        
+
       </div>
     </div>
   );
 };
 
-// CTA Button Component
-// CTA Button Component
 export const CTAButton = ({ className = "", children, onClick, to = "/contact" }) => {
   const scrollToTop = () => {
     window.scrollTo({
@@ -109,7 +107,6 @@ export const CTAButton = ({ className = "", children, onClick, to = "/contact" }
 
   return content;
 };
-// Infinite Marquee Component
 const InfiniteMarquee = ({ children, className = "" }) => {
   return (
     <div className={`overflow-hidden ${className}`}>
@@ -120,11 +117,16 @@ const InfiniteMarquee = ({ children, className = "" }) => {
   );
 };
 
-// Header Component
+
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
-
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+  }
   const navItems = [
     { name: 'HOME', path: '/' },
     { name: 'ABOUT US', path: '/about' },
@@ -183,7 +185,7 @@ export const Header = () => {
           </CTAButton>
 
           {/* Mobile Menu Button */}
-          <button 
+          <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="lg:hidden text-white"
           >
@@ -202,16 +204,15 @@ export const Header = () => {
               <Link
                 key={item.name}
                 to={item.path}
-                className={`text-xs font-medium transition-colors hover:text-yellow-400 ${
-                  location.pathname === item.path 
-                    ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' 
-                    : 'text-white'
-                }`}
-                onClick={()=>{
-                   window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+                className={`text-xs font-medium transition-colors hover:text-yellow-400 ${location.pathname === item.path
+                  ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1'
+                  : 'text-white'
+                  }`}
+                onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }}
               >
                 {item.name}
@@ -234,16 +235,30 @@ export const Header = () => {
                   <Link
                     key={item.name}
                     to={item.path}
-                    onClick={() => setIsMenuOpen(false)}
-                    className={`block text-xs font-medium transition-colors hover:text-yellow-400 ${
-                      location.pathname === item.path ? 'text-yellow-400' : 'text-white'
-                    }`}
+                    onClick={() => {
+                      // Close menu
+                      setIsMenuOpen(false);
+
+                      // Delay scroll slightly to ensure it's not overridden by route change
+                      setTimeout(() => {
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth',
+                        });
+                      }, 100); // 50-150ms usually works well
+                    }}
+
+                    className={`block text-xs font-medium transition-colors hover:text-yellow-400 ${location.pathname === item.path ? 'text-yellow-400' : 'text-white'
+                      }`}
                   >
                     {item.name}
                   </Link>
                 ))}
-                <CTAButton className="w-full mt-3 text-xs">
-                  📅 SCHEDULE CALL
+                <CTAButton className="w-full mt-3 text-xs" onClick={() => {
+                  setIsMenuOpen(false);
+
+                }}>
+                  <a href='/contact'>    📅 SCHEDULE CALL</a>
                 </CTAButton>
               </div>
             </motion.nav>
@@ -254,10 +269,10 @@ export const Header = () => {
   );
 };
 
-// Hero Section
+
 const HeroSection = () => {
   return (<>
-      <EmergencyMarquee />
+    <EmergencyMarquee />
     <section className="bg-black py-12 relative overflow-hidden">
 
       <div className="container mx-auto px-4">
@@ -277,11 +292,11 @@ const HeroSection = () => {
                 <br />
                 DIGITAL EXCELLENCE
               </h1>
-              
+
               <div className="flex items-center space-x-2 text-xs">
                 <span>WHERE INNOVATION MEETS</span>
                 <span className="text-yellow-400 font-bold">RESULTS</span>
-                <motion.span 
+                <motion.span
                   animate={{ rotate: [0, 10, -10, 0] }}
                   transition={{ repeat: Infinity, duration: 2 }}
                   className="text-yellow-400"
@@ -359,20 +374,20 @@ const HeroSection = () => {
           >
             <div className="relative">
               {/* Laptop Mockup */}
-              <div className="relative z-10" style={{zIndex:1}}>
-                <img 
-                  src="https://images.unsplash.com/photo-1699154581577-ce92c7a86638?w=500&h=300&fit=crop" 
-                  alt="Professional Website" 
+              <div className="relative z-10" style={{ zIndex: 1 }}>
+                <img
+                  src="https://images.unsplash.com/photo-1699154581577-ce92c7a86638?w=500&h=300&fit=crop"
+                  alt="Professional Website"
                   className="w-full rounded-lg shadow-2xl"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent rounded-lg"></div>
               </div>
 
               {/* Mobile Mockup */}
-              <div className="absolute -bottom-8 -right-8 z-20" style={{zIndex:1}}>
-                <img 
-                  src="https://images.unsplash.com/photo-1553169507-38833977274b?w=150&h=200&fit=crop" 
-                  alt="Mobile Website" 
+              <div className="absolute -bottom-8 -right-8 z-20" style={{ zIndex: 1 }}>
+                <img
+                  src="https://images.unsplash.com/photo-1553169507-38833977274b?w=150&h=200&fit=crop"
+                  alt="Mobile Website"
                   className="w-24 h-36 object-cover rounded-lg shadow-xl border-2 border-white"
                 />
               </div>
@@ -382,7 +397,7 @@ const HeroSection = () => {
                 animate={{ y: [-8, 8, -8] }}
                 transition={{ repeat: Infinity, duration: 3 }}
                 className="absolute top-8 -right-4 bg-yellow-400 text-black p-2 rounded-full shadow-lg"
-                style={{zIndex:1000}}
+                style={{ zIndex: 1000 }}
               >
                 <span className="font-bold text-xs">24H</span>
               </motion.div>
@@ -391,7 +406,7 @@ const HeroSection = () => {
                 animate={{ y: [8, -8, 8] }}
                 transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute -top-4 left-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
-                style={{zIndex:1000}}
+                style={{ zIndex: 1000 }}
 
               >
                 <FaStar size={12} />
@@ -400,7 +415,7 @@ const HeroSection = () => {
                 animate={{ y: [8, -8, 8] }}
                 transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute bottom-20 right-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
-                style={{zIndex:1000}}
+                style={{ zIndex: 1000 }}
 
               >
                 <FaStar size={12} />
@@ -413,12 +428,12 @@ const HeroSection = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.5 }}
               className="absolute -bottom-4 left-4 bg-gray-800 p-3 rounded-lg shadow-xl max-w-xs"
-              style={{zIndex:1}}
+              style={{ zIndex: 1 }}
             >
               <div className="flex items-center space-x-2 mb-2">
-                <img 
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face" 
-                  alt="Michael" 
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=40&h=40&fit=crop&crop=face"
+                  alt="Michael"
                   className="w-8 h-8 rounded-full"
                 />
                 <div>
@@ -439,11 +454,11 @@ const HeroSection = () => {
         </div>
       </div>
     </section>
-    </>
+  </>
   );
 };
 
-// Portfolio Section
+
 const PortfolioSection = () => {
   const portfolioItems = [
     {
@@ -465,7 +480,7 @@ const PortfolioSection = () => {
       category: "Hotel"
     },
     {
-      id: 'tsm-restaurant', 
+      id: 'tsm-restaurant',
       title: "TSM RESTAURANT",
       image: "https://images.unsplash.com/photo-1591882592683-b68044f837b0?w=400&h=300&fit=crop",
       category: "Restaurant"
@@ -495,7 +510,7 @@ const PortfolioSection = () => {
         >
           <h2 className="text-2xl lg:text-4xl font-bold mb-3">
             PORTFOLIO
-            <motion.span 
+            <motion.span
               animate={{ rotate: [0, 15, -15, 0] }}
               transition={{ repeat: Infinity, duration: 2 }}
               className="inline-block text-yellow-400 ml-2"
@@ -517,9 +532,9 @@ const PortfolioSection = () => {
               className="bg-gray-800 rounded-lg overflow-hidden shadow-xl transform perspective-1000"
             >
               <div className="relative">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
+                <img
+                  src={item.image}
+                  alt={item.title}
                   className="w-full h-32 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -529,7 +544,7 @@ const PortfolioSection = () => {
                 </div>
               </div>
               <div className="p-3">
-                <Link 
+                <Link
                   to={`/project/${item.id}`}
                   className="block w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-1.5 rounded-lg transition-colors text-center text-xs"
                 >
@@ -558,7 +573,7 @@ const PortfolioSection = () => {
   );
 };
 
-// FAQ Section
+
 const FAQSection = () => {
   const [activeIndex, setActiveIndex] = useState(null);
 
@@ -646,7 +661,7 @@ const FAQSection = () => {
   );
 };
 
-// CTA Section with Infinite Marquee
+
 const CTASection = () => {
   return (
     <section className="py-12 bg-gradient-to-r from-yellow-400 to-yellow-600">
@@ -663,7 +678,7 @@ const CTASection = () => {
             </h2>
           </div>
         </InfiniteMarquee>
-        
+
         <div className="text-center mt-6">
           <CTAButton className="bg-black hover:bg-gray-800 text-yellow-400 text-sm px-8 py-3">
             👑 CLAIM YOUR DIGITAL DOMINANCE
@@ -674,10 +689,10 @@ const CTASection = () => {
   );
 };
 
-// Service Detail Component
+
 export const ServiceDetail = () => {
   const { serviceType } = useParams();
-  
+
   const serviceData = {
     'roofing': {
       title: "Roofing Website Design",
@@ -695,7 +710,7 @@ export const ServiceDetail = () => {
       ],
       benefits: [
         "300% increase in qualified leads",
-        "Faster response to emergency calls", 
+        "Faster response to emergency calls",
         "Professional brand image",
         "Competitive advantage"
       ],
@@ -711,7 +726,7 @@ export const ServiceDetail = () => {
       image: "https://images.unsplash.com/photo-1555238920-7a6bea18473b?w=800&h=400&fit=crop",
       features: [
         "Online Booking System",
-        "Virtual Room Tours", 
+        "Virtual Room Tours",
         "Amenity Showcases",
         "Multi-language Support",
         "Guest Review Platform",
@@ -732,7 +747,7 @@ export const ServiceDetail = () => {
       ]
     },
     'restaurant': {
-      title: "Restaurant Website Design", 
+      title: "Restaurant Website Design",
       description: "Appetizing restaurant websites that bring customers through your doors.",
       image: "https://images.unsplash.com/photo-1591882592683-b68044f837b0?w=800&h=400&fit=crop",
       features: [
@@ -815,8 +830,8 @@ export const ServiceDetail = () => {
       image: "https://images.unsplash.com/photo-1614127938540-a1139bee1841?w=800&h=400&fit=crop",
       features: [
         "Custom Development",
-        // "E-commerce Solutions",
-        // "CMS Integration",
+
+
         "API Development",
         "Database Design",
         "Third-party Integrations",
@@ -870,8 +885,8 @@ export const ServiceDetail = () => {
 
           {/* Service Image */}
           <div className="mb-8">
-            <img 
-              src={service.image} 
+            <img
+              src={service.image}
               alt={service.title}
               className="w-full h-64 object-cover rounded-lg shadow-xl"
             />
@@ -946,10 +961,10 @@ export const ServiceDetail = () => {
   );
 };
 
-// Project Detail Component
+
 export const ProjectDetail = () => {
   const { projectId } = useParams();
-  
+
   const projectData = {
     'rapid-response': {
       title: "Rapid Response Roofing",
@@ -958,7 +973,7 @@ export const ProjectDetail = () => {
       description: "A comprehensive roofing contractor website featuring emergency services, detailed service pages, and lead generation forms.",
       features: [
         "Emergency Contact System",
-        "Before/After Gallery", 
+        "Before/After Gallery",
         "Service Area Mapping",
         "Customer Reviews Integration",
         "Mobile-First Design",
@@ -1145,8 +1160,8 @@ export const ProjectDetail = () => {
 
           {/* Project Image */}
           <div className="mb-8">
-            <img 
-              src={project.image} 
+            <img
+              src={project.image}
               alt={project.title}
               className="w-full h-64 object-cover rounded-lg shadow-xl"
             />
@@ -1240,7 +1255,7 @@ export const ProjectDetail = () => {
   );
 };
 
-// Home Page
+
 export const Home = () => {
   return (
     <main>
@@ -1252,7 +1267,7 @@ export const Home = () => {
   );
 };
 
-// About Page
+
 export const About = () => {
   return (
     <main className="py-12">
@@ -1268,30 +1283,30 @@ export const About = () => {
               ABOUT <span className="text-yellow-400">PIXEL RISE WEB CO</span>
             </h1>
             <p className="text-lg text-gray-300 leading-relaxed">
-              PIONEERING DIGITAL TRANSFORMATION FOR VISIONARY ENTERPRISES. 
-              We architect cutting-edge web solutions that propel businesses into 
+              PIONEERING DIGITAL TRANSFORMATION FOR VISIONARY ENTERPRISES.
+              We architect cutting-edge web solutions that propel businesses into
               market leadership through strategic design and innovative technology.
             </p>
           </div>
 
           <div className="grid lg:grid-cols-2 gap-8 items-center mb-12">
             <div>
-              <img 
-                src="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?w=500&h=300&fit=crop" 
-                alt="Our Team" 
+              <img
+                src="https://images.unsplash.com/photo-1516216628859-9bccecab13ca?w=500&h=300&fit=crop"
+                alt="Our Team"
                 className="w-full rounded-lg shadow-xl"
               />
             </div>
             <div className="space-y-4">
               <h2 className="text-xl font-bold text-yellow-400">EXCELLENCE THROUGH INNOVATION</h2>
               <p className="text-gray-300 leading-relaxed text-sm">
-                Founded on the principle of transformational digital excellence, 
-                Pixel Rise Web Co has emerged as the definitive partner for enterprises 
+                Founded on the principle of transformational digital excellence,
+                Pixel Rise Web Co has emerged as the definitive partner for enterprises
                 seeking to establish commanding market presence through superior web solutions.
               </p>
               <p className="text-gray-300 leading-relaxed text-sm">
-                Our specialized expertise spans high-impact industries including construction, 
-                hospitality, culinary arts, wellness, and fitness. We don't just create websites – 
+                Our specialized expertise spans high-impact industries including construction,
+                hospitality, culinary arts, wellness, and fitness. We don't just create websites –
                 we engineer digital ecosystems that drive measurable business growth.
               </p>
               <CTAButton className="text-sm">
@@ -1329,7 +1344,7 @@ export const About = () => {
   );
 };
 
-// Services Page
+
 export const Services = () => {
   const services = [
     {
@@ -1372,8 +1387,8 @@ export const Services = () => {
       title: "Custom Web Solutions",
       description: "Tailored web solutions for any industry or business type.",
       image: "https://images.unsplash.com/photo-1614127938540-a1139bee1841?w=400&h=250&fit=crop",
-      features: ["Custom Development",  "CMS Integration", "API Development"]
-      // features: ["Custom Development", "E-commerce", "CMS Integration", "API Development"]
+      features: ["Custom Development", "CMS Integration", "API Development"]
+
     }
   ];
 
@@ -1390,7 +1405,7 @@ export const Services = () => {
             OUR <span className="text-yellow-400">SERVICES</span>
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
-            We specialize in creating high-converting websites for service-based businesses. 
+            We specialize in creating high-converting websites for service-based businesses.
             Our expertise spans multiple industries, delivering results that matter.
           </p>
           <CTAButton className="text-sm">
@@ -1407,9 +1422,9 @@ export const Services = () => {
               transition={{ duration: 0.8, delay: index * 0.1 }}
               className="bg-gray-800 rounded-lg overflow-hidden shadow-xl"
             >
-              <img 
-                src={service.image} 
-                alt={service.title} 
+              <img
+                src={service.image}
+                alt={service.title}
                 className="w-full h-32 object-cover"
               />
               <div className="p-6">
@@ -1425,11 +1440,11 @@ export const Services = () => {
                 </ul>
                 <Link
                   to={`/service/${service.id}`}
-                  onClick={()=>{
+                  onClick={() => {
                     window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+                      top: 0,
+                      behavior: 'smooth',
+                    });
                   }}
                   className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-center block text-sm"
                 >
@@ -1452,7 +1467,7 @@ export const Services = () => {
   );
 };
 
-// Portfolio Page
+
 export const Portfolio = () => {
   const portfolioItems = [
     {
@@ -1465,7 +1480,7 @@ export const Portfolio = () => {
     {
       id: 'columbus-roofing',
       title: "COLUMBUS ROOFING CO",
-      category: "Roofing", 
+      category: "Roofing",
       image: "https://images.unsplash.com/photo-1553169507-38833977274b?w=500&h=300&fit=crop",
       description: "Professional roofing contractor website with portfolio and testimonials."
     },
@@ -1512,7 +1527,7 @@ export const Portfolio = () => {
             OUR <span className="text-yellow-400">PORTFOLIO</span>
           </h1>
           <p className="text-lg text-gray-300 max-w-2xl mx-auto mb-6">
-            Explore our showcase of successful websites across different industries. 
+            Explore our showcase of successful websites across different industries.
             Each project represents our commitment to excellence and results.
           </p>
           <CTAButton className="text-sm">
@@ -1531,9 +1546,9 @@ export const Portfolio = () => {
               className="bg-gray-800 rounded-lg overflow-hidden shadow-xl"
             >
               <div className="relative">
-                <img 
-                  src={item.image} 
-                  alt={item.title} 
+                <img
+                  src={item.image}
+                  alt={item.title}
                   className="w-full h-48 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
@@ -1546,7 +1561,7 @@ export const Portfolio = () => {
               <div className="p-4">
                 <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
                 <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
-                <Link 
+                <Link
                   to={`/project/${item.id}`}
                   className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg transition-colors inline-block text-sm"
                 >
@@ -1598,12 +1613,12 @@ export const Footer = () => {
 
             {/* Logo & Description */}
             <div>
-              <Link to="/" onClick={()=>{
+              <Link to="/" onClick={() => {
                 console.log("asdsa")
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
+                window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
               }} className="flex items-center space-x-2 mb-3">
                 <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-2 rounded-full">
                   <FaCrown className="text-black text-lg" />
@@ -1623,7 +1638,7 @@ export const Footer = () => {
               </CTAButton>
             </div>
 
-            {/* Contact */} 
+            {/* Contact */}
             <div>
               <h3 className="text-yellow-400 font-bold text-sm mb-3">CONTACT</h3>
               <div className="space-y-2">
