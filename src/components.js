@@ -148,7 +148,11 @@ export const Header = () => {
         <div className="flex items-center justify-between py-2">
           {/* Logo Section */}
           <Link to="/" className="flex items-center space-x-2" onClick={() => {
-    window.scrollTo({ top: 0, behavior: 'smooth' });
+                  setIsMenuOpen(false);
+setTimeout(()=>{
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+},500)
   }}>
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-2 rounded-full">
               <FaCrown className="text-black text-lg" />
