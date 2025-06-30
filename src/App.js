@@ -12,6 +12,8 @@ import {
 } from './components';
 import './App.css';
 import { Contact } from './Contact';
+import { PrivacyPolicy } from './PrivacyPolicy';
+import { TermsOfService } from './TermsOfService';
 
 function App() {
   return (
@@ -27,6 +29,8 @@ function App() {
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/project/:projectId" element={<ProjectDetail />} />
+         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+      <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
           <Footer />
         </div>

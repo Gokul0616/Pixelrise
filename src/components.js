@@ -73,7 +73,7 @@ const EmergencyMarquee = () => {
 
 // CTA Button Component
 // CTA Button Component
-const CTAButton = ({ className = "", children, onClick, to = "/contact" }) => {
+export const CTAButton = ({ className = "", children, onClick, to = "/contact" }) => {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -207,6 +207,12 @@ export const Header = () => {
                     ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1' 
                     : 'text-white'
                 }`}
+                onClick={()=>{
+                   window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+                }}
               >
                 {item.name}
               </Link>
@@ -1578,14 +1584,20 @@ export const Footer = () => {
             <div>
               <h3 className="text-yellow-400 font-bold text-sm mb-3">HELP</h3>
               <ul className="space-y-1">
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Privacy Policy</a></li>
-                <li><a href="#" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Terms Of Service</a></li>
+                <li><a href="/privacy-policy" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Privacy Policy</a></li>
+                <li><a href="/terms-of-service" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Terms Of Service</a></li>
               </ul>
             </div>
 
             {/* Logo & Description */}
             <div>
-              <Link to="/" className="flex items-center space-x-2 mb-3">
+              <Link to="/" onClick={()=>{
+                console.log("asdsa")
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+              }} className="flex items-center space-x-2 mb-3">
                 <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-2 rounded-full">
                   <FaCrown className="text-black text-lg" />
                 </div>

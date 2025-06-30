@@ -363,12 +363,12 @@ export const Contact = () => {
                 <a href="https://in.linkedin.com/in/pixelrise-web-co-a07440371" className="bg-blue-800 p-3 rounded-full hover:bg-blue-900 transition-colors">
                   <FaLinkedin className="text-white" />
                 </a>
-                <a href="https://facebook.com" className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors">
+                {/* <a href="https://facebook.com" className="bg-blue-600 p-3 rounded-full hover:bg-blue-700 transition-colors">
                   <FaFacebook className="text-white" />
                 </a>
                 <a href="https://youtube.com" className="bg-red-600 p-3 rounded-full hover:bg-red-700 transition-colors">
                   <FaYoutube className="text-white" />
-                </a>
+                </a> */}
               </div>
             </div>
 
