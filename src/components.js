@@ -137,10 +137,19 @@ export const Header = () => {
 
   return (
     <header className="bg-black border-b border-gray-800 sticky top-0 z-50">
+      <div className="flex items-center justify-center space-x-2 lg:hidden bg-yellow-400 py-1">
+        <FaPhone className="text-black text-sm" />
+        <span className="text-xs text-black">+91 9443914436</span>
+        <span className="text-xs text-black">| 24/7 Service</span>
+      </div>
       <div className="container mx-auto px-4">
+
+
         <div className="flex items-center justify-between py-2">
           {/* Logo Section */}
-          <Link to="/" className="flex items-center space-x-2">
+          <Link to="/" className="flex items-center space-x-2" onClick={() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }}>
             <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-2 rounded-full">
               <FaCrown className="text-black text-lg" />
             </div>
@@ -254,17 +263,23 @@ export const Header = () => {
                     {item.name}
                   </Link>
                 ))}
+                                 <Link
+  to="/contact"
+  onClick={() => {
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 100); // Delay gives time for route to load
+  }}
+>
                 <CTAButton className="w-full mt-3 text-xs" onClick={() => {
                   setIsMenuOpen(false);
 
                 }}>
-                  <Link to='/contact' onClick={()=>{
-                     window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth',
-                        });
-                  }}>    📅 SCHEDULE CALL</Link>
+
+  📅 SCHEDULE CALL
+
                 </CTAButton>
+</Link>
               </div>
             </motion.nav>
           )}
@@ -419,6 +434,16 @@ const HeroSection = () => {
               <motion.div
                 animate={{ y: [8, -8, 8] }}
                 transition={{ repeat: Infinity, duration: 4 }}
+                className="absolute -bottom-10 left-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
+                style={{ zIndex: 1000 }}
+
+              >
+                <FaStar size={12} />
+              </motion.div>
+
+              <motion.div
+                animate={{ y: [8, -8, 8] }}
+                transition={{ repeat: Infinity, duration: 4 }}
                 className="absolute bottom-20 right-8 bg-green-500 text-white p-1.5 rounded-full shadow-lg"
                 style={{ zIndex: 1000 }}
 
@@ -551,12 +576,12 @@ const PortfolioSection = () => {
               <div className="p-3">
                 <Link
                   to={`/project/${item.id}`}
-                  onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
-                }}
+                  onClick={() => {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
                   className="block w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-1.5 rounded-lg transition-colors text-center text-xs"
                 >
                   View Project
@@ -1573,12 +1598,12 @@ export const Portfolio = () => {
                 <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
                 <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
                 <Link
-                  to={`/project/${item.id}`}onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
-                }}
+                  to={`/project/${item.id}`} onClick={() => {
+                    window.scrollTo({
+                      top: 0,
+                      behavior: 'smooth',
+                    });
+                  }}
                   className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg transition-colors inline-block text-sm"
                 >
                   View Project Details
@@ -1610,35 +1635,35 @@ export const Footer = () => {
             <div>
               <h3 className="text-yellow-400 font-bold text-sm mb-3">QUICK LINKS</h3>
               <ul className="space-y-1">
-                <li><Link to="/" onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
+                <li><Link to="/" onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Home</Link></li>
-                <li><Link to="/about" onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
+                <li><Link to="/about" onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">About Us</Link></li>
-                <li><Link to="/services" onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
+                <li><Link to="/services" onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Services</Link></li>
-                <li><Link to="/portfolio" onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
+                <li><Link to="/portfolio" onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Portfolio</Link></li>
-                <li><Link to="/contact" onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
+                <li><Link to="/contact" onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Contact</Link></li>
               </ul>
             </div>
@@ -1647,17 +1672,18 @@ export const Footer = () => {
             <div>
               <h3 className="text-yellow-400 font-bold text-sm mb-3">HELP</h3>
               <ul className="space-y-1">
-                <li><Link to="/privacy-policy" onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                });
+                <li><Link to="/privacy-policy" onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  });
                 }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Privacy Policy</Link></li>
-                <li><Link to="/terms-of-service" onClick={()=>{
-                   window.scrollTo({
-                  top: 0,
-                  behavior: 'smooth',
-                }) }}className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Terms Of Service</Link></li>
+                <li><Link to="/terms-of-service" onClick={() => {
+                  window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth',
+                  })
+                }} className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Terms Of Service</Link></li>
               </ul>
             </div>
 

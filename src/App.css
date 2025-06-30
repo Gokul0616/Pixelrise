@@ -47,11 +47,11 @@ html {
 }
 
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 10s linear infinite;
 }
 
 .animate-marquee-infinite {
-  animation: marquee-infinite 30s linear infinite;
+  animation: marquee-infinite 5s linear infinite;
 }
 
 /* Custom animations */
