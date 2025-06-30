@@ -1606,7 +1606,7 @@ export const Footer = () => {
             <div>
               <h3 className="text-yellow-400 font-bold text-sm mb-3">HELP</h3>
               <ul className="space-y-1">
-                <li><a href="/privacy-policy" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Privacy Policy</a></li>
+                <li><Link to="/privacy-policy" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Privacy Policy</Link></li>
                 <li><a href="/terms-of-service" className="text-gray-300 hover:text-yellow-400 transition-colors text-xs">Terms Of Service</a></li>
               </ul>
             </div>
