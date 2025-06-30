@@ -815,8 +815,8 @@ export const ServiceDetail = () => {
       image: "https://images.unsplash.com/photo-1614127938540-a1139bee1841?w=800&h=400&fit=crop",
       features: [
         "Custom Development",
-        "E-commerce Solutions",
-        "CMS Integration",
+        // "E-commerce Solutions",
+        // "CMS Integration",
         "API Development",
         "Database Design",
         "Third-party Integrations",
@@ -1372,7 +1372,8 @@ export const Services = () => {
       title: "Custom Web Solutions",
       description: "Tailored web solutions for any industry or business type.",
       image: "https://images.unsplash.com/photo-1614127938540-a1139bee1841?w=400&h=250&fit=crop",
-      features: ["Custom Development", "E-commerce", "CMS Integration", "API Development"]
+      features: ["Custom Development",  "CMS Integration", "API Development"]
+      // features: ["Custom Development", "E-commerce", "CMS Integration", "API Development"]
     }
   ];
 
@@ -1424,6 +1425,12 @@ export const Services = () => {
                 </ul>
                 <Link
                   to={`/service/${service.id}`}
+                  onClick={()=>{
+                    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    });
+                  }}
                   className="w-full bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-lg font-semibold transition-colors text-center block text-sm"
                 >
                   Learn More

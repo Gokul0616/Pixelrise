@@ -261,12 +261,13 @@ export const Contact = () => {
                   ['roofing','Roofing Website'],['hotel','Hotel Website'],
                   ['restaurant','Restaurant Website'],['beauty','Beauty Parlor Website'],
                   ['gym','Gym Website'],['custom','Custom Solution'],
-                  ['redesign','Website Redesign'],['ecommerce','E-commerce Website']
+                  ['redesign','Website Redesign'],
+                //   ['ecommerce','E-commerce Website']
                 ]},
                 { name: 'projectType', label: 'Project Type', opts: [
                   ['','Select Type'],['new','New Website'],['redesign','Website Redesign'],
                   ['maintenance','Website Maintenance'],['seo','SEO Optimization'],
-                  ['ecommerce','E-commerce Store']
+                //   ['ecommerce','E-commerce Store']
                 ]},
                 { name: 'budget', label: 'Budget Range', opts: [
                   ['','Select Budget'],['under-1k','Under $1,000'],['1k-3k','$1,000 - $3,000'],
