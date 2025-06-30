@@ -1614,7 +1614,6 @@ export const Footer = () => {
             {/* Logo & Description */}
             <div>
               <Link to="/" onClick={() => {
-                console.log("asdsa")
                 window.scrollTo({
                   top: 0,
                   behavior: 'smooth',
