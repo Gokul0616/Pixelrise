@@ -27,6 +27,7 @@ import {
   FaTools
 } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
+import me from "./image.png"
 
 const EmergencyMarquee = () => {
   return (
@@ -118,6 +119,159 @@ const InfiniteMarquee = ({ children, className = "" }) => {
 };
 
 
+const CommitmentSection = () => {
+  return (
+    <section className="py-12 bg-gradient-to-b from-black to-gray-900">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-6xl mx-auto"
+        >
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-2xl lg:text-4xl font-bold mb-3">
+              YOUR VISION, <span className="text-yellow-400">OUR COMMITMENT</span>
+            </h2>
+            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-center">
+            {/* Left Content - Text */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-6"
+            >
+              <div className="space-y-4">
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Hello, I'm the founder of <span className="text-yellow-400 font-semibold">Pixel Rise Web Co</span>. 
+                  Not just another web design agency lost in the digital crowd, but your dedicated partner in transforming businesses through exceptional web solutions.
+                </p>
+                
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  Over the past years, I've had the privilege of collaborating with 120+ businesses across various industries - 
+                  from roofing contractors to luxury hotels, restaurants to fitness centers. But here's what sets us apart...
+                </p>
+                
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  <span className="text-yellow-400 font-semibold">I don't just build websites.</span> I immerse myself in understanding your business, 
+                  your challenges, and your vision. I've walked jobsites with contractors, dined at the restaurants I've designed for, 
+                  and experienced the services firsthand to truly understand what drives your success.
+                </p>
+                
+                <p className="text-gray-300 leading-relaxed text-sm">
+                  From the first consultation call to the moment your website goes live, my focus is singular: 
+                  <span className="text-yellow-400 font-semibold"> delivering results that transform your business.</span> 
+                  That's not just a promise – it's my personal commitment to every client.
+                </p>
+              </div>
+
+              {/* Stats/Badges */}
+              <div className="grid grid-cols-2 gap-4 pt-6 border-t border-gray-700">
+                <div className="text-center">
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <FaUsers className="text-yellow-400 text-lg" />
+                    <span className="text-xl font-bold text-white">120+</span>
+                  </div>
+                  <p className="text-gray-400 text-xs">HAPPY CLIENTS</p>
+                </div>
+                <div className="text-center">
+                  <div className="flex items-center justify-center space-x-2 mb-2">
+                    <FaTrophy className="text-yellow-400 text-lg" />
+                    <span className="text-xl font-bold text-white">500+</span>
+                  </div>
+                  <p className="text-gray-400 text-xs">PROJECTS DELIVERED</p>
+                </div>
+              </div>
+
+              {/* Guarantee Badge */}
+              <div className="bg-gray-800 p-4 rounded-lg border-l-4 border-yellow-400">
+                <div className="flex items-center space-x-3">
+                  <FaShieldAlt className="text-yellow-400 text-xl" />
+                  <div>
+                    <h3 className="text-white font-semibold text-sm">100% SATISFACTION GUARANTEE</h3>
+                    <p className="text-gray-400 text-xs">Your success is our reputation. We don't stop until you're thrilled.</p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Right Content - Images */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="relative"
+            >
+              <div className="relative">
+                {/* Main Image */}
+                <div className="relative z-10">
+                  <img
+                    src={me}
+                    alt="Pixel Rise Web Co Founder"
+                    className="w-full rounded-lg shadow-2xl"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-lg"></div>
+                </div>
+
+                {/* Floating Badge */}
+                <motion.div
+                  animate={{ y: [-8, 8, -8] }}
+                  transition={{ repeat: Infinity, duration: 3 }}
+                  className="absolute -top-4 -right-4 bg-yellow-400 text-black p-3 rounded-full shadow-xl z-20"
+                >
+                  <FaCrown className="text-lg" />
+                </motion.div>
+
+                {/* Experience Badge */}
+                <motion.div
+                  animate={{ y: [8, -8, 8] }}
+                  transition={{ repeat: Infinity, duration: 4 }}
+                  className="absolute -bottom-6 -left-6 bg-gray-800 border border-yellow-400 p-4 rounded-lg shadow-xl z-20"
+                >
+                  <div className="text-center">
+                    <span className="text-yellow-400 font-bold text-lg">5+</span>
+                    <p className="text-white text-xs font-semibold">YEARS</p>
+                    <p className="text-gray-400 text-xs">EXPERIENCE</p>
+                  </div>
+                </motion.div>
+
+                {/* Success Rate Badge */}
+                <motion.div
+                  animate={{ scale: [1, 1.1, 1] }}
+                  transition={{ repeat: Infinity, duration: 5 }}
+                  className="absolute top-1/2 -right-8 bg-green-500 text-white p-3 rounded-full shadow-xl z-20"
+                >
+                  <div className="text-center">
+                    <FaCheckCircle className="text-lg" />
+                  </div>
+                </motion.div>
+              </div>
+            </motion.div>
+          </div>
+
+          {/* Bottom CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="text-center mt-12 pt-8 border-t border-gray-700"
+          >
+            <h3 className="text-lg font-bold mb-4">
+              Ready to transform your vision into a <span className="text-yellow-400">thriving reality?</span>
+            </h3>
+            <CTAButton className="text-sm px-6 py-3">
+              🤝 LET'S MAKE IT HAPPEN
+            </CTAButton>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
 export const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const location = useLocation();
@@ -1311,6 +1465,7 @@ export const Home = () => {
       <PortfolioSection />
       <FAQSection />
       <CTASection />
+<CommitmentSection/>
     </main>
   );
 };
