@@ -546,6 +546,12 @@ const PortfolioSection = () => {
               <div className="p-3">
                 <Link
                   to={`/project/${item.id}`}
+                  onClick={()=>{
+                   window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                }}
                   className="block w-full bg-yellow-400 hover:bg-yellow-500 text-black font-semibold py-1.5 rounded-lg transition-colors text-center text-xs"
                 >
                   View Project
@@ -1562,7 +1568,12 @@ export const Portfolio = () => {
                 <h3 className="text-lg font-bold text-white mb-2">{item.title}</h3>
                 <p className="text-gray-300 mb-4 text-sm">{item.description}</p>
                 <Link
-                  to={`/project/${item.id}`}
+                  to={`/project/${item.id}`}onClick={()=>{
+                   window.scrollTo({
+                  top: 0,
+                  behavior: 'smooth',
+                });
+                }}
                   className="bg-yellow-400 hover:bg-yellow-500 text-black font-semibold px-4 py-2 rounded-lg transition-colors inline-block text-sm"
                 >
                   View Project Details
