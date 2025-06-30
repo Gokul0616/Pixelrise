@@ -258,7 +258,12 @@ export const Header = () => {
                   setIsMenuOpen(false);
 
                 }}>
-                  <a href='/contact'>    📅 SCHEDULE CALL</a>
+                  <Link to='/contact' onClick={()=>{
+                     window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth',
+                        });
+                  }}>    📅 SCHEDULE CALL</Link>
                 </CTAButton>
               </div>
             </motion.nav>
