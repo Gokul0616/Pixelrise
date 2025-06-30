@@ -1730,7 +1730,7 @@ export const Footer = () => {
                       <FaFacebook size={16} />
                     </a> */}
                     <a href="https://instagram.com/pixelrisewebco" className="text-gray-300 hover:text-pink-600 transition-colors">
-                      <FaInstagram size={16} />
+                      <FaInstagram size={20} />
                     </a>
                     {/* <a href="https://google.com" className="text-gray-300 hover:text-red-600 transition-colors">
                       <FaGoogle size={16} />
@@ -1739,7 +1739,7 @@ export const Footer = () => {
                       <FaYoutube size={16} />
                     </a> */}
                     <a href="https://in.linkedin.com/in/pixelrise-web-co-a07440371" className="text-gray-300 hover:text-blue-800 transition-colors">
-                      <FaLinkedin size={16} />
+                      <FaLinkedin size={20} />
                     </a>
                   </div>
                 </div>
@@ -1748,17 +1748,18 @@ export const Footer = () => {
           </div>
 
           <div className="border-t border-gray-800 mt-8 pt-6">
-            <div className="text-center">
-              <p className="text-gray-400 text-xs mb-3">
-                All Rights Reserved. The imitation, duplication, and or copy of any of our media as a representation of your own is a criminal offense and will be prosecuted.
-              </p>
-              <div className="bg-red-600 py-2 px-3 rounded">
-                <p className="text-white text-xs">
-                  Website Designed With ❤️ by <strong>Pixel Rise Web Co</strong> - Creating Digital Success Stories.
-                </p>
-              </div>
-            </div>
-          </div>
+  <div className="text-center">
+    <p className="text-gray-400 text-xs mb-3">
+      © All rights reserved. Unauthorized use, reproduction, or distribution of any part of this website is strictly prohibited and may result in legal action.
+    </p>
+    <div className="bg-red-600 py-2 px-3 rounded">
+      <p className="text-white text-xs">
+        Designed with ❤️ by <strong>Pixel Rise Web Co</strong> — Turning ideas into powerful digital experiences.
+      </p>
+    </div>
+  </div>
+</div>
+
         </div>
       </footer>
     </>
