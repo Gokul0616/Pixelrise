@@ -1766,7 +1766,7 @@ export const Footer = () => {
               </p>
               <div className="bg-red-600 py-2 px-3 rounded">
                 <p className="text-white text-xs">
-                  Designed with ❤️ by <strong>Pixel Rise Web Co</strong> — Turning ideas into powerful digital experiences.
+                  Designed with 💛 by <strong>Pixel Rise Web Co</strong> — Turning ideas into powerful digital experiences.
                 </p>
               </div>
             </div>
