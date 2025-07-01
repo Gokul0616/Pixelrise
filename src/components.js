@@ -31,7 +31,7 @@ import me from "./image.png"
 import pixelrisewebcoowner from "./pixelrisewebcoowner.png"
 const EmergencyMarquee = () => {
   return (
-    <div className="bg-gray-600 text-white py-1.5 overflow-hidden">
+    <div className="bg-gray-800 text-white py-1.5 overflow-hidden">
       <div className="animate-marquee whitespace-nowrap">
         <span className="text-xs font-semibold mx-4">
           🚨 EMERGENCY WEBSITE DELIVERY WITHIN 24 HOURS! ⭐
