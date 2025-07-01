@@ -38,13 +38,25 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
+            <Route path="/about/our-story" element={<OurStory />} />
+            <Route path="/about/our-process" element={<OurProcess />} />
+            <Route path="/about/testimonials" element={<Testimonials />} />
             <Route path="/services" element={<Services />} />
+            <Route path="/services/website-design" element={<WebsiteDesign />} />
+            <Route path="/services/web-development" element={<WebDevelopment />} />
+            <Route path="/services/what-is-seo" element={<WhatIsSEO />} />
+            <Route path="/services/ecommerce" element={<ECommerce />} />
+            <Route path="/services/mobile-websites" element={<MobileWebsites />} />
             <Route path="/service/:serviceType" element={<ServiceDetail />} />
             <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/project/:projectId" element={<ProjectDetail />} />
-         <Route path="/privacy-policy" element={<PrivacyPolicy />} />
-      <Route path="/terms-of-service" element={<TermsOfService />} />
+            <Route path="/blog" element={<Blog />} />
+            <Route path="/resources/web-design-tips" element={<WebDesignTips />} />
+            <Route path="/resources/why-choose-us" element={<WhyChooseUs />} />
+            <Route path="/resources/faqs" element={<FAQs />} />
+            <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+            <Route path="/terms-of-service" element={<TermsOfService />} />
           </Routes>
           <Footer />
         </div>
