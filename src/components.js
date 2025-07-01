@@ -28,7 +28,7 @@ import {
 } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
 import me from "./image.png"
-
+import pixelrisewebcoowner from "./pixelrisewebcoowner.png"
 const EmergencyMarquee = () => {
   return (
     <div className="bg-red-600 text-white py-1.5 overflow-hidden">
@@ -168,7 +168,7 @@ const FrustrationsToSolutionsSection = () => {
           </div>
 
           {/* Success Story */}
-          <motion.div
+         {/* <motion.div
             initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.6 }}
@@ -186,7 +186,7 @@ const FrustrationsToSolutionsSection = () => {
                 </p>
               </div>
             </div>
-          </motion.div>
+          </motion.div>/*}
 
           {/* Owner Commitment */}
           <motion.div
@@ -198,7 +198,7 @@ const FrustrationsToSolutionsSection = () => {
             <div className="bg-gray-800 p-6 rounded-lg max-w-2xl mx-auto">
               <div className="flex items-center justify-center space-x-4 mb-4">
                 <img
-                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+                  src={pixelrisewebcoowner}
                   alt="Founder"
                   className="w-12 h-12 rounded-full border-2 border-yellow-400"
                 />
@@ -459,7 +459,7 @@ export const Header = () => {
         { name: 'WEBSITE DESIGN', path: '/services/website-design' },
         { name: 'WEB DEVELOPMENT', path: '/services/web-development' },
         { name: 'WHAT IS SEO', path: '/services/what-is-seo' },
-        { name: 'E-COMMERCE', path: '/services/ecommerce' },
+        // { name: 'E-COMMERCE', path: '/services/ecommerce' },
         { name: 'MOBILE WEBSITES', path: '/services/mobile-websites' }
       ]
     },
