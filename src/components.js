@@ -72,6 +72,164 @@ const EmergencyMarquee = () => {
   );
 };
 
+const FrustrationsToSolutionsSection = () => {
+  const frustrations = [
+    "You're tired of your website not bringing in any results at all...?",
+    "You are left wondering when the 'SEO' will start working...?", 
+    "You have already paid thousands to an agency - without any good results...?",
+    "You want a decent website but you don't know who you can trust...?"
+  ];
+
+  const solutions = [
+    "Because I'm not about false promises, I keep it real.",
+    "I have real experience, with real results.",
+    "I'm the most affordable at my level.",
+    "My work is high quality.",
+    "I have a huge portfolio (120+) of proven results."
+  ];
+
+  return (
+    <section className="py-12 bg-gradient-to-b from-gray-900 to-black">
+      <div className="container mx-auto px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 50 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="max-w-6xl mx-auto"
+        >
+          {/* Section Header */}
+          <div className="text-center mb-12">
+            <h2 className="text-2xl lg:text-4xl font-bold mb-3">
+              WEB DESIGN <span className="text-red-500">FRUSTRATIONS</span>
+              <br />
+              INTO <span className="text-yellow-400">SOLUTIONS</span>
+            </h2>
+            <div className="w-20 h-1 bg-yellow-400 mx-auto"></div>
+          </div>
+
+          <div className="grid lg:grid-cols-2 gap-12 items-start">
+            {/* Frustrations Side */}
+            <motion.div
+              initial={{ opacity: 0, x: -50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="space-y-6"
+            >
+              <div className="text-center mb-8">
+                <h3 className="text-xl font-bold text-red-500 mb-4">COMMON FRUSTRATIONS</h3>
+                <p className="text-gray-300 text-sm">Sound familiar? You're not alone...</p>
+              </div>
+
+              {frustrations.map((frustration, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-red-900/20 border-l-4 border-red-500 p-4 rounded-lg"
+                >
+                  <div className="flex items-start space-x-3">
+                    <span className="text-red-500 font-bold text-lg">😤</span>
+                    <p className="text-gray-300 text-sm italic">"{frustration}"</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+
+            {/* Solutions Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 50 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.4 }}
+              className="space-y-6"
+            >
+              <div className="text-center mb-8">
+                <div className="bg-yellow-400 text-black px-6 py-3 rounded-full inline-block mb-4">
+                  <h3 className="text-lg font-bold">🎉 GOOD NEWS, IT'S YOUR LUCKY DAY!</h3>
+                </div>
+                <p className="text-gray-300 text-sm">Here's how we solve these problems...</p>
+              </div>
+
+              {solutions.map((solution, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6, delay: index * 0.1 }}
+                  className="bg-green-900/20 border-l-4 border-green-500 p-4 rounded-lg"
+                >
+                  <div className="flex items-start space-x-3">
+                    <span className="text-green-500 font-bold text-lg">✅</span>
+                    <p className="text-gray-300 text-sm">{solution}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+
+          {/* Success Story */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            className="mt-12 text-center"
+          >
+            <div className="bg-gradient-to-r from-yellow-400 to-yellow-600 p-8 rounded-lg">
+              <h3 className="text-xl font-bold text-black mb-4">REAL CLIENT SUCCESS</h3>
+              <p className="text-black text-sm mb-4">
+                "On average, my clients add an additional <span className="font-bold">$500,000+</span> in the first year after they let me do their website design and SEO."
+              </p>
+              <div className="bg-black text-yellow-400 p-4 rounded-lg inline-block">
+                <p className="font-bold text-sm">
+                  <span className="text-white">Example:</span> Rapid Response Roofing - 
+                  <span className="text-yellow-400"> $300,000+ in just 6 months</span>
+                </p>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* Owner Commitment */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            className="mt-8 text-center"
+          >
+            <div className="bg-gray-800 p-6 rounded-lg max-w-2xl mx-auto">
+              <div className="flex items-center justify-center space-x-4 mb-4">
+                <img
+                  src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=60&h=60&fit=crop&crop=face"
+                  alt="Founder"
+                  className="w-12 h-12 rounded-full border-2 border-yellow-400"
+                />
+                <div>
+                  <h4 className="font-bold text-white text-sm">Pixel Rise Founder</h4>
+                  <p className="text-yellow-400 text-xs">Owner of Pixel Rise Web Co</p>
+                </div>
+              </div>
+              <p className="text-gray-300 text-sm italic">
+                "Your Vision, <span className="text-yellow-400 font-bold">Our Commitment</span>"
+              </p>
+            </div>
+          </motion.div>
+
+          {/* CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.0 }}
+            className="text-center mt-8"
+          >
+            <CTAButton className="text-sm px-8 py-3">
+              🚀 TURN YOUR FRUSTRATIONS INTO SUCCESS
+            </CTAButton>
+          </motion.div>
+        </motion.div>
+      </div>
+    </section>
+  );
+};
+
 export const CTAButton = ({ className = "", children, onClick, to = "/contact" }) => {
   const scrollToTop = () => {
     window.scrollTo({
