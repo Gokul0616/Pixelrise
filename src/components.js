@@ -90,7 +90,7 @@ const FrustrationsToSolutionsSection = () => {
 
   return (
     <section className="py-12 bg-gradient-to-b from-gray-900 to-black">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -280,7 +280,7 @@ const InfiniteMarquee = ({ children, className = "" }) => {
 const CommitmentSection = () => {
   return (
     <section className="py-12 bg-gradient-to-b from-black to-gray-900">
-      <div className="container mx-auto px-4">
+      <div className="container mx-auto px-4 overflow-hidden">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}

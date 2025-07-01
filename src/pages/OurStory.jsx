@@ -5,16 +5,16 @@ import { FaCrown, FaRocket, FaHeart, FaUsers, FaTrophy } from 'react-icons/fa';
 
 export const OurStory = () => {
   return (
-    <main className="py-12">
+  <main className="py-12 overflow-x-hidden">
       <div className="container mx-auto px-4">
         <motion.div
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          className="max-w-4xl mx-auto"
+          className="max-w-4xl mx-auto overflow-hidden"
         >
           {/* Hero Section */}
-          <div className="text-center mb-12">
+          <div className="text-center mb-12 max-w-full">
             <h1 className="text-2xl lg:text-4xl font-bold mb-4">
               OUR <span className="text-yellow-400">STORY</span>
             </h1>
