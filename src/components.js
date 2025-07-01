@@ -490,43 +490,86 @@ export const Header = () => {
             >
               <div className="py-3 space-y-3">
                 {navItems.map((item) => (
-                  <Link
-                    key={item.name}
-                    to={item.path}
-                    onClick={() => {
-                      // Close menu
-                      setIsMenuOpen(false);
-
-                      // Delay scroll slightly to ensure it's not overridden by route change
-                      setTimeout(() => {
-                        window.scrollTo({
-                          top: 0,
-                          behavior: 'smooth',
-                        });
-                      }, 100); // 50-150ms usually works well
-                    }}
-
-                    className={`block text-xs font-medium transition-colors hover:text-yellow-400 ${location.pathname === item.path ? 'text-yellow-400' : 'text-white'
-                      }`}
-                  >
-                    {item.name}
-                  </Link>
+                  <div key={item.name}>
+                    {item.dropdown ? (
+                      <div>
+                        <div
+                          onClick={() => setActiveDropdown(activeDropdown === item.name ? null : item.name)}
+                          className={`flex items-center justify-between px-4 py-2 text-xs font-medium transition-colors hover:text-yellow-400 cursor-pointer ${
+                            location.pathname === item.path ||
+                            (item.dropdown && item.dropdown.some(subItem => location.pathname === subItem.path))
+                              ? 'text-yellow-400' : 'text-white'
+                          }`}
+                        >
+                          <span>{item.name}</span>
+                          <FaChevronDown className={`text-xs transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                        </div>
+                        <AnimatePresence>
+                          {activeDropdown === item.name && (
+                            <motion.div
+                              initial={{ opacity: 0, height: 0 }}
+                              animate={{ opacity: 1, height: 'auto' }}
+                              exit={{ opacity: 0, height: 0 }}
+                              className="bg-gray-800 mx-4 rounded-lg overflow-hidden"
+                            >
+                              {item.dropdown.map((subItem) => (
+                                <Link
+                                  key={subItem.name}
+                                  to={subItem.path}
+                                  onClick={() => {
+                                    setIsMenuOpen(false);
+                                    setActiveDropdown(null);
+                                    setTimeout(() => {
+                                      window.scrollTo({
+                                        top: 0,
+                                        behavior: 'smooth',
+                                      });
+                                    }, 100);
+                                  }}
+                                  className={`block px-4 py-3 text-xs font-medium transition-colors hover:bg-gray-700 hover:text-yellow-400 ${
+                                    location.pathname === subItem.path ? 'text-yellow-400 bg-gray-700' : 'text-white'
+                                  }`}
+                                >
+                                  {subItem.name}
+                                </Link>
+                              ))}
+                            </motion.div>
+                          )}
+                        </AnimatePresence>
+                      </div>
+                    ) : (
+                      <Link
+                        to={item.path}
+                        onClick={() => {
+                          setIsMenuOpen(false);
+                          setTimeout(() => {
+                            window.scrollTo({
+                              top: 0,
+                              behavior: 'smooth',
+                            });
+                          }, 100);
+                        }}
+                        className={`block px-4 py-2 text-xs font-medium transition-colors hover:text-yellow-400 ${
+                          location.pathname === item.path ? 'text-yellow-400' : 'text-white'
+                        }`}
+                      >
+                        {item.name}
+                      </Link>
+                    )}
+                  </div>
                 ))}
                 <Link
                   to="/contact"
                   onClick={() => {
                     setTimeout(() => {
                       window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }, 100); // Delay gives time for route to load
+                    }, 100);
                   }}
                 >
-                  <CTAButton className="w-full mt-3 text-xs" onClick={() => {
+                  <CTAButton className="w-full mt-3 text-xs mx-4" onClick={() => {
                     setIsMenuOpen(false);
-
                   }}>
-
                     📅 SCHEDULE CALL
-
                   </CTAButton>
                 </Link>
               </div>
