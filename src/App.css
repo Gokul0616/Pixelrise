@@ -45,10 +45,18 @@ html {
     transform: translateX(-50%);
   }
 }
-
+/* Default animation for desktop */
 .animate-marquee {
-  animation: marquee 20s linear infinite;
+  animation: marquee 50s linear infinite;
 }
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+  .animate-marquee {
+    animation: marquee 20s linear infinite;
+  }
+}
+
 
 .animate-marquee-infinite {
   animation: marquee-infinite 10s linear infinite;
