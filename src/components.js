@@ -398,22 +398,83 @@ export const Header = () => {
         <nav className="hidden lg:block border-t border-gray-800">
           <div className="flex items-center justify-center space-x-6 py-2">
             {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className={`text-xs font-medium transition-colors hover:text-yellow-400 ${location.pathname === item.path
-                  ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1'
-                  : 'text-white'
-                  }`}
-                onClick={() => {
-                  window.scrollTo({
-                    top: 0,
-                    behavior: 'smooth',
-                  });
-                }}
+              <div 
+                key={item.name} 
+                className="relative"
+                onMouseEnter={() => item.dropdown && setActiveDropdown(item.name)}
+                onMouseLeave={() => setActiveDropdown(null)}
               >
-                {item.name}
-              </Link>
+                {item.dropdown ? (
+                  <div className="flex items-center">
+                    <Link
+                      to={item.path}
+                      className={`text-xs font-medium transition-colors hover:text-yellow-400 flex items-center space-x-1 ${
+                        location.pathname === item.path ||
+                        (item.dropdown && item.dropdown.some(subItem => location.pathname === subItem.path))
+                          ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1'
+                          : 'text-white'
+                      }`}
+                      onClick={() => {
+                        window.scrollTo({
+                          top: 0,
+                          behavior: 'smooth',
+                        });
+                      }}
+                    >
+                      <span>{item.name}</span>
+                      <FaChevronDown className={`text-xs transition-transform ${activeDropdown === item.name ? 'rotate-180' : ''}`} />
+                    </Link>
+                    
+                    {/* Dropdown Menu */}
+                    <AnimatePresence>
+                      {activeDropdown === item.name && (
+                        <motion.div
+                          initial={{ opacity: 0, y: -10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: -10 }}
+                          className="absolute top-full left-0 mt-2 w-48 bg-gray-800 border border-gray-700 rounded-lg shadow-xl z-50"
+                        >
+                          {item.dropdown.map((subItem) => (
+                            <Link
+                              key={subItem.name}
+                              to={subItem.path}
+                              className={`block px-4 py-3 text-xs font-medium transition-colors hover:bg-gray-700 hover:text-yellow-400 first:rounded-t-lg last:rounded-b-lg ${
+                                location.pathname === subItem.path ? 'text-yellow-400 bg-gray-700' : 'text-white'
+                              }`}
+                              onClick={() => {
+                                setActiveDropdown(null);
+                                window.scrollTo({
+                                  top: 0,
+                                  behavior: 'smooth',
+                                });
+                              }}
+                            >
+                              {subItem.name}
+                            </Link>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`text-xs font-medium transition-colors hover:text-yellow-400 ${
+                      location.pathname === item.path
+                        ? 'text-yellow-400 border-b-2 border-yellow-400 pb-1'
+                        : 'text-white'
+                    }`}
+                    onClick={() => {
+                      window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth',
+                      });
+                    }}
+                  >
+                    {item.name}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
         </nav>
