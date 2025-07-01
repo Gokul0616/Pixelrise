@@ -724,7 +724,7 @@ export const Header = () => {
                     }, 100);
                   }}
                 >
-                  <CTAButton className="w-full mt-3 text-xs mx-4" onClick={() => {
+                  <CTAButton className="w-full mt-3 text-xs " onClick={() => {
                     setIsMenuOpen(false);
                   }}>
                     📅 SCHEDULE CALL
