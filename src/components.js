@@ -468,7 +468,7 @@ export const Header = () => {
       name: 'RESOURCES', 
       path: '#',
       dropdown: [
-        { name: 'BLOG', path: '/blog' },
+       // { name: 'BLOG', path: '/blog' },
         { name: 'WEB DESIGN TIPS', path: '/resources/web-design-tips' },
         { name: 'WHY CHOOSE US', path: '/resources/why-choose-us' },
         { name: 'FAQS', path: '/resources/faqs' }
@@ -1758,6 +1758,7 @@ export const Home = () => {
       <FAQSection />
       <CTASection />
 <CommitmentSection/>
+    <FrustrationsToSolutionsSection />
     </main>
   );
 };
