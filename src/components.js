@@ -401,7 +401,7 @@ const CommitmentSection = () => {
                 <motion.div
                   animate={{ scale: [1, 1.1, 1] }}
                   transition={{ repeat: Infinity, duration: 5 }}
-                  className="absolute top-1/2 -right-8 bg-green-500 text-white p-3 rounded-full shadow-xl z-20"
+                  className="absolute top-1/2 right-8 bg-green-500 text-white p-3 rounded-full shadow-xl z-20"
                 >
                   <div className="text-center">
                     <FaCheckCircle className="text-lg" />
