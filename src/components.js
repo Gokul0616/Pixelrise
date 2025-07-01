@@ -281,11 +281,41 @@ export const Header = () => {
       behavior: 'smooth',
     });
   }
+  const [activeDropdown, setActiveDropdown] = useState(null);
+
   const navItems = [
     { name: 'HOME', path: '/' },
-    { name: 'ABOUT US', path: '/about' },
-    { name: 'SERVICES', path: '/services' },
+    { 
+      name: 'ABOUT', 
+      path: '/about',
+      dropdown: [
+        { name: 'OUR STORY', path: '/about/our-story' },
+        { name: 'OUR PROCESS', path: '/about/our-process' },
+        { name: 'TESTIMONIALS', path: '/about/testimonials' }
+      ]
+    },
+    { 
+      name: 'SERVICES', 
+      path: '/services',
+      dropdown: [
+        { name: 'WEBSITE DESIGN', path: '/services/website-design' },
+        { name: 'WEB DEVELOPMENT', path: '/services/web-development' },
+        { name: 'WHAT IS SEO', path: '/services/what-is-seo' },
+        { name: 'E-COMMERCE', path: '/services/ecommerce' },
+        { name: 'MOBILE WEBSITES', path: '/services/mobile-websites' }
+      ]
+    },
     { name: 'PORTFOLIO', path: '/portfolio' },
+    { 
+      name: 'RESOURCES', 
+      path: '#',
+      dropdown: [
+        { name: 'BLOG', path: '/blog' },
+        { name: 'WEB DESIGN TIPS', path: '/resources/web-design-tips' },
+        { name: 'WHY CHOOSE US', path: '/resources/why-choose-us' },
+        { name: 'FAQS', path: '/resources/faqs' }
+      ]
+    },
     { name: 'CONTACT', path: '/contact' },
   ];
 
