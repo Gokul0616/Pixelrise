@@ -328,8 +328,9 @@ const handleSubmit = async (e) => {
               {/* Submit */}
               <CTAButton
                 type="submit"
-                className="w-full text-sm"
+                className={`w-full text-sm ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
                 disableScroll
+                disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
               </CTAButton>
