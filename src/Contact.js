@@ -68,8 +68,6 @@ const CTAButton = ({
 };
 
 export const Contact = () => {
-  const mailRef = useRef(null);
-
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -84,6 +82,8 @@ export const Contact = () => {
     hearAboutUs: '',
     preferredContact: 'email'
   });
+
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     setFormData(prev => ({
