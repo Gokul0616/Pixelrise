@@ -92,9 +92,9 @@ export const Contact = () => {
     }));
   };
 
- const handleSubmit = (e) => {
+const handleSubmit = async (e) => {
   e.preventDefault();
-
+  
   const { name, email, message } = formData;
 
   // Basic validation: Require name, email, and message
@@ -108,54 +108,69 @@ export const Contact = () => {
       },
       duration: 3000,
     });
-    return; // Stop form submission
-  }
-  const fieldLabels = {
-    name: 'Name',
-    email: 'Email',
-    phone: 'Phone',
-    company: 'Company',
-    website: 'Website',
-    service: 'Service Needed',
-    projectType: 'Project Type',
-    budget: 'Budget Range',
-    timeline: 'Timeline',
-    hearAboutUs: 'How Did You Hear About Us',
-    preferredContact: 'Preferred Contact Method',
-    message: 'Project Details'
-  };
-
-  const filteredFields = Object.entries(formData)
-    .filter(([_, value]) => value.trim() !== '')
-    .map(([key, value]) => `${fieldLabels[key]}: ${value.trim()}`);
-
-  const subject = encodeURIComponent('Contact Form Submission from PixelRise Web Co');
-  const body = encodeURIComponent(filteredFields.join('\n'));
-  const mailtoLink = `mailto:pixelrisewebco@gmail.com?subject=${subject}&body=${body}`;
-
-  if (mailRef.current) {
-    mailRef.current.href = mailtoLink;
-    mailRef.current.click();
+    return;
   }
 
-  toast.success('Opening your email client...', {
-    style: {
-      background: '#1F2937',
-      color: '#F3F4F6',
-      border: '1px solid #FBBF24',
-      borderRadius: '8px',
-    },
-    iconTheme: { primary: '#DC2626', secondary: '#F3F4F6' },
-    duration: 5000,
-  });
+  setIsSubmitting(true);
 
-  // Reset form
-  setFormData({
-    name: '', email: '', phone: '', company: '',
-    website: '', service: 'roofing', budget: '',
-    timeline: '', projectType: '', message: '',
-    hearAboutUs: '', preferredContact: 'email'
-  });
+  try {
+    // Prepare the data for Firebase
+    const submissionData = {
+      name: formData.name.trim(),
+      email: formData.email.trim(),
+      phone: formData.phone.trim(),
+      company: formData.company.trim(),
+      website: formData.website.trim(),
+      service: formData.service,
+      budget: formData.budget,
+      timeline: formData.timeline,
+      projectType: formData.projectType,
+      message: formData.message.trim(),
+      hearAboutUs: formData.hearAboutUs,
+      preferredContact: formData.preferredContact,
+      submittedAt: serverTimestamp(),
+      status: 'new'
+    };
+
+    // Add document to Firebase Firestore
+    await addDoc(collection(db, 'contact-submissions'), submissionData);
+
+    // Success notification
+    toast.success('Message sent successfully! We\'ll get back to you soon.', {
+      style: {
+        background: '#1F2937',
+        color: '#F3F4F6',
+        border: '1px solid #10B981',
+        borderRadius: '8px',
+      },
+      iconTheme: { primary: '#10B981', secondary: '#F3F4F6' },
+      duration: 5000,
+    });
+
+    // Reset form
+    setFormData({
+      name: '', email: '', phone: '', company: '',
+      website: '', service: 'roofing', budget: '',
+      timeline: '', projectType: '', message: '',
+      hearAboutUs: '', preferredContact: 'email'
+    });
+
+  } catch (error) {
+    console.error('Error submitting form:', error);
+    
+    // Error notification
+    toast.error('Failed to send message. Please try again or contact us directly.', {
+      style: {
+        background: '#1F2937',
+        color: '#F3F4F6',
+        border: '1px solid #DC2626',
+        borderRadius: '8px',
+      },
+      duration: 5000,
+    });
+  } finally {
+    setIsSubmitting(false);
+  }
 };
 
 
