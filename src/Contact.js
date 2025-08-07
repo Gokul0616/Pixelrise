@@ -178,16 +178,7 @@ const handleSubmit = async (e) => {
     <main className="py-12">
       <Toaster position="top-right" toastOptions={{ duration: 5000 }} />
 
-      {/* Hidden mailto link */}
-      <a
-        href="/"
-        ref={mailRef}
-        style={{ display: 'none' }}
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        mailto
-      </a>
+
 
       <div className="container mx-auto px-4">
         <motion.div
