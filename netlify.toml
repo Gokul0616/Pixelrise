@@ -15,17 +15,9 @@
   
   # Yarn version
   YARN_VERSION = "1.22.22"
-
-# Configure secrets scanning to allow Firebase configuration variables
-# These are client-side public configuration values, not sensitive secrets
-[build.environment]
-  # Node.js version - Updated to 20 for Firebase compatibility
-  NODE_VERSION = "20"
-  
-  # Yarn version
-  YARN_VERSION = "1.22.22"
   
   # Disable secrets scanning for Firebase client configuration
+  # These are client-side public configuration values, not sensitive secrets
   SECRETS_SCAN_OMIT_KEYS = "REACT_APP_FIREBASE_API_KEY,REACT_APP_FIREBASE_AUTH_DOMAIN,REACT_APP_FIREBASE_PROJECT_ID,REACT_APP_FIREBASE_STORAGE_BUCKET,REACT_APP_FIREBASE_MESSAGING_SENDER_ID,REACT_APP_FIREBASE_APP_ID,REACT_APP_FIREBASE_MEASUREMENT_ID"
 
 # Redirects for SPA routing
