@@ -1,4 +1,38 @@
+# Netlify Configuration for React App
+[build]
+  # Directory where the build command will run
+  base = "/"
+  
+  # Build command
+  command = "yarn build"
+  
+  # Directory with built files to deploy
+  publish = "build"
+
+[build.environment]
+  # Node.js version
+  NODE_VERSION = "18"
+  
+  # Yarn version
+  YARN_VERSION = "1.22.22"
+
+# Redirects for SPA routing
 [[redirects]]
-from = "/*"
-to = '/index.html'
-status = 200
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+# Cache static assets
+[[headers]]
+  for = "/static/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
