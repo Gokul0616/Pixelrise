@@ -16,7 +16,7 @@ import {
 } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
 import { db } from './firebase';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { collection, addDoc, serverTimestamp } from '@firebase/firestore';
 
 // Updated CTAButton Component
 const CTAButton = ({
