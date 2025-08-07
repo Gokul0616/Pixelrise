@@ -95,8 +95,6 @@ export const Contact = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   
-  console.log('Form submission started');
-  
   const { name, email, message } = formData;
 
   // Basic validation: Require name, email, and message
@@ -116,8 +114,6 @@ const handleSubmit = async (e) => {
   setIsSubmitting(true);
 
   try {
-    console.log('Attempting to submit to Firebase...');
-    
     // Test Firebase connection first
     if (!db) {
       throw new Error('Firebase not initialized');
@@ -141,12 +137,8 @@ const handleSubmit = async (e) => {
       status: 'new'
     };
 
-    console.log('Submitting data:', submissionData);
-
     // Add document to Firebase Firestore
-    const docRef = await addDoc(collection(db, 'contact-submissions'), submissionData);
-    
-    console.log('Document written with ID: ', docRef.id);
+    await addDoc(collection(db, 'contact-submissions'), submissionData);
 
     // Success notification
     toast.success('Message sent successfully! We\'ll get back to you soon.', {
@@ -169,21 +161,20 @@ const handleSubmit = async (e) => {
     });
 
   } catch (error) {
-    console.error('Detailed error submitting form:', error);
+    console.error('Error submitting form:', error);
     
-    // Error notification with more details for debugging
-    toast.error(`Failed to send message: ${error.message}. Please try again or contact us directly.`, {
+    // Error notification
+    toast.error('Failed to send message. Please try again or contact us directly.', {
       style: {
         background: '#1F2937',
         color: '#F3F4F6',
         border: '1px solid #DC2626',
         borderRadius: '8px',
       },
-      duration: 8000,
+      duration: 5000,
     });
   } finally {
     setIsSubmitting(false);
-    console.log('Form submission completed');
   }
 };
 
