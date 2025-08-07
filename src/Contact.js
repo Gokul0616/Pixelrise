@@ -326,14 +326,20 @@ const handleSubmit = async (e) => {
               </div>
 
               {/* Submit */}
-              <CTAButton
+              <motion.button
                 type="submit"
-                className={`w-full text-sm ${isSubmitting ? 'opacity-75 cursor-not-allowed' : ''}`}
-                disableScroll
                 disabled={isSubmitting}
+                whileHover={{ scale: isSubmitting ? 1 : 1.05 }}
+                whileTap={{ scale: isSubmitting ? 1 : 0.95 }}
+                className={`
+                  w-full bg-red-600 hover:bg-red-700 text-white
+                  px-4 py-2 rounded-lg font-semibold text-sm
+                  transition-colors
+                  ${isSubmitting ? 'opacity-75 cursor-not-allowed' : 'hover:bg-red-700'}
+                `}
               >
                 {isSubmitting ? 'Sending...' : 'Send Message'}
-              </CTAButton>
+              </motion.button>
             </form>
           </motion.div>
 
