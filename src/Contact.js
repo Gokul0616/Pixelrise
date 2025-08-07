@@ -330,9 +330,8 @@ const handleSubmit = async (e) => {
                 type="submit"
                 className="w-full text-sm"
                 disableScroll
-                onClick={handleSubmit}
               >
-                Send Message
+                {isSubmitting ? 'Sending...' : 'Send Message'}
               </CTAButton>
             </form>
           </motion.div>
