@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
-import { getFirestore } from "firebase/firestore";
+import { getFirestore, connectFirestoreEmulator } from "firebase/firestore";
 import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
@@ -14,17 +14,31 @@ const firebaseConfig = {
   measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
+// Validate Firebase configuration
+const isValidConfig = Object.values(firebaseConfig).every(value => value && value !== 'undefined');
+
+if (!isValidConfig) {
+  console.error('Firebase configuration is incomplete:', firebaseConfig);
+}
+
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
 // Initialize Firestore Database
 export const db = getFirestore(app);
 
-// Initialize Analytics (optional)
+// Initialize Analytics (optional and only in browser)
 let analytics;
-if (typeof window !== 'undefined') {
-  analytics = getAnalytics(app);
+if (typeof window !== 'undefined' && firebaseConfig.measurementId) {
+  try {
+    analytics = getAnalytics(app);
+  } catch (error) {
+    console.warn('Analytics initialization failed:', error);
+  }
 }
+
+// Log Firebase initialization status
+console.log('Firebase initialized with project ID:', firebaseConfig.projectId);
 
 export { analytics };
 export default app;
