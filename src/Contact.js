@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import {
@@ -15,6 +15,8 @@ import {
   FaStar
 } from 'react-icons/fa';
 import toast, { Toaster } from 'react-hot-toast';
+import { db } from './firebase';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 // Updated CTAButton Component
 const CTAButton = ({
