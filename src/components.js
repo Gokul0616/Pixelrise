@@ -756,11 +756,11 @@ const HeroSection = () => {
           >
             <div className="space-y-3">
               <h1 className="text-3xl lg:text-5xl font-bold leading-tight">
-                TRANSFORMING
+AMERICA’S BEST  
                 <br />
-                <span className="text-yellow-400">BUSINESSES</span> THROUGH
+                <span className="text-yellow-400">GYMS</span> THROUGH
                 <br />
-                DIGITAL EXCELLENCE
+            WEB DESIGN AGENCY
               </h1>
 
               <div className="flex items-center space-x-2 text-xs">
