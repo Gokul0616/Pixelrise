@@ -758,7 +758,7 @@ const HeroSection = () => {
               <h1 className="text-3xl lg:text-5xl font-bold leading-tight">
 AMERICA’S BEST  
                 <br />
-                <span className="text-yellow-400">GYMS</span> THROUGH
+                <span className="text-yellow-400">GYMS</span> 
                 <br />
             WEB DESIGN AGENCY
               </h1>
